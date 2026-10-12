@@ -43,19 +43,32 @@ Bounding-box labels are generated automatically with Grounding DINO, then a YOLO
 
 ### Run on Google Colab (in this order)
 
-Both notebooks are saved with their outputs, so the results can be viewed without re-running them. Preparing the data and training take a long time.
+All notebooks are saved with their outputs, so the results can be viewed without re-running them. Preparing the data and training take a long time.
 
 | Step | Notebook | What it does |
 |---|---|---|
 | 1 | [`objectdetection/prepare_dataset.ipynb`](https://colab.research.google.com/github/Varun-Ponugoti/DLAI/blob/main/objectdetection/prepare_dataset.ipynb) | Cleans the dataset, splits it 70/15/15 into train/val/test, and auto-labels bounding boxes with Grounding DINO. Run all cells. |
 | 2 | [`objectdetection/train_yolo_model.ipynb`](https://colab.research.google.com/github/Varun-Ponugoti/DLAI/blob/main/objectdetection/train_yolo_model.ipynb) | Builds the grid dataset and `data.yaml`, then trains YOLOv8s (up to 100 epochs, image size 1024). |
-| 3 | Same notebook, section **Evaluate on test set** | Evaluates the best model on the test set and prints mAP50, mAP50-95, precision and recall. |
+| 3 | [`objectdetection/test_model.ipynb`](https://colab.research.google.com/github/Varun-Ponugoti/DLAI/blob/main/objectdetection/test_model.ipynb) | Evaluates the best model on the test set: mAP50, mAP50-95, precision, recall, per-class metrics, the confusion matrix, and predictions on sample test images. Run all cells. |
+| 4 | [`objectdetection/YOLO_Test.ipynb`](https://colab.research.google.com/github/Varun-Ponugoti/DLAI/blob/main/objectdetection/YOLO_Test.ipynb) | *(Optional)* Runs the trained model on a single image and draws the detected bounding boxes with class names and confidence scores. |
 
 In `train_yolo_model.ipynb`, run the cells in order but **skip the *Resume training* cell**. Only run it if training was interrupted.
+
+In `YOLO_Test.ipynb`, update the two paths before running:
+```python
+model = YOLO("<path to best.pt>")
+image_path = "<path to a test image>"
+```
+To run it in Colab, add `!pip install -q ultralytics` and mount Google Drive (`from google.colab import drive; drive.mount('/content/drive')`) in a cell at the top. The model path is then `/content/drive/MyDrive/Objectdetection/runs/yolov8s_grid/weights/best.pt`.
 
 Outputs are saved to `My Drive/Objectdetection/`:
 - `data/`: split images, labels, and annotation previews
 - `runs/yolov8s_grid/`: trained weights (`best.pt`, `last.pt`) and training plots
-- `runs/yolov8s_grid_test/`: test set results
+- `runs/yolov8s_grid_test/`: test set results, including `per_class_metrics.csv` and the confusion matrix
+- `runs/yolov8s_grid_test_predictions/`: predicted boxes on sample test images
 
 **Skip steps 1–2:** the prepared dataset and trained model are available [here](https://drive.google.com/drive/folders/1NXn7oX20Aw8ERXLlPt4_IGABaGaJsOWN?usp=sharing).
+
+### Best model
+
+The best trained model is saved at `My Drive/Objectdetection/runs/yolov8s_grid/weights/best.pt`. It is also available in the shared Drive folder above.
