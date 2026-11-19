@@ -164,7 +164,7 @@ notebook (see [How to Run](#how-to-run)).
 
 ## Progress
 
-### M1 — Setup & Dataset ✅ complete
+### M1 — Setup & Dataset complete
 
 - [x] **Dataset chosen:** COCO Captions 2017 (`val2017`, 5,000 images, ~25k captions)
 - [x] **Cleaned & preprocessed:** 4,064 images passed the filters; 2,000 pairs sampled
@@ -177,7 +177,7 @@ notebook (see [How to Run](#how-to-run)).
   `outputs/milestone1_baseline/text_embedding_report.json`
 - [x] **5 baseline runs** with `StableDiffusionPipeline` (PNDM, 30 steps, guidance 7.5)
 
-### M2 — Integration & Baseline 🔄 in progress
+### M2 — Integration & Baseline in progress
 
 Done:
 - [x] **Text encoder integrated with the diffusion model:** CLIP + UNet + VAE + scheduler
