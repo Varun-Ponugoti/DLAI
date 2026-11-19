@@ -1,0 +1,80 @@
+{
+  "model_id": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+  "text_encoder": "CLIPTextModel",
+  "params_millions": 123,
+  "embedding_shape_per_prompt": [
+    77,
+    768
+  ],
+  "num_captions": 2000,
+  "token_lengths": {
+    "min": 9,
+    "median": 12.0,
+    "max": 51,
+    "limit": 77
+  },
+  "encode_seconds": 1.89,
+  "mean_random_pair_similarity": 0.243,
+  "nearest_neighbour_examples": [
+    {
+      "query": "a flag is flying in a green grassy area",
+      "neighbours": [
+        {
+          "score": 0.578,
+          "caption": "a plane flying low with an american flag flying in the foreground"
+        },
+        {
+          "score": 0.547,
+          "caption": "a traffic light on a pole with a grassy hill in the background"
+        },
+        {
+          "score": 0.541,
+          "caption": "there is a frisbee lying next to a tree in a grassy field"
+        }
+      ]
+    },
+    {
+      "query": "a desk top with a monitor and keyboard on it",
+      "neighbours": [
+        {
+          "score": 0.841,
+          "caption": "a desk with two computer monitors and a laptop"
+        },
+        {
+          "score": 0.839,
+          "caption": "a desk with both a laptop computer and a desktop computer"
+        },
+        {
+          "score": 0.813,
+          "caption": "a desk top computer and a laptop sitting on a computer desk"
+        }
+      ]
+    },
+    {
+      "query": "a four compartment tray holding various food items",
+      "neighbours": [
+        {
+          "score": 0.646,
+          "caption": "three white trays on a countertop containing various types of food"
+        },
+        {
+          "score": 0.618,
+          "caption": "a plate filled with several types of decadent foods"
+        },
+        {
+          "score": 0.616,
+          "caption": "assortment of finished meals displayed on a table"
+        }
+      ]
+    }
+  ],
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "dtype": "torch.float16",
+  "versions": {
+    "python": "3.10.21",
+    "torch": "2.14.0+cu130",
+    "diffusers": "0.41.0",
+    "transformers": "5.18.0"
+  }
+}
