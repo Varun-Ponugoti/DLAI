@@ -1,0 +1,45 @@
+# Python / environments
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Model weights and checkpoints: too large for git, share via Drive instead
+*.safetensors
+*.ckpt
+*.bin
+*.pt
+*.pth
+*.keras
+*.h5
+*.onnx
+
+# Archives (e.g. Colab result downloads)
+*.zip
+
+
+# YOLO training/eval output, if run locally instead of on Drive
+discriminative/**/runs/
+
+
+# Datasets: never commit images (large; rebuildable from the manifest)
+generative/data/*
+!generative/data/.gitkeep
+!generative/data/coco_subset/
+generative/data/coco_subset/*
+!generative/data/coco_subset/manifest.csv
+!generative/data/coco_subset/cleaning_report.json
+
+# Stray photos anywhere in the project (generated outputs are .png and are kept)
+generative/**/*.jpg
+generative/**/*.jpeg

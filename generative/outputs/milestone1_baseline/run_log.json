@@ -1,0 +1,87 @@
+{
+  "generated_utc": "2026-11-19T16:58:27.597521+00:00",
+  "model_id": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+  "pipeline": "StableDiffusionPipeline",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "dtype": "torch.float16",
+  "versions": {
+    "python": "3.10.21",
+    "torch": "2.14.0+cu130",
+    "diffusers": "0.41.0",
+    "transformers": "5.18.0"
+  },
+  "num_runs": 5,
+  "runs": [
+    {
+      "experiment": "baseline",
+      "tag": "p1_simple_object",
+      "prompt": "a red apple on a wooden table",
+      "negative_prompt": "blurry, lowres, distorted, watermark, text",
+      "seed": 42,
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "scheduler": "PNDMScheduler",
+      "height": 512,
+      "width": 512,
+      "seconds": 6.64,
+      "image": "images/p1_simple_object.png"
+    },
+    {
+      "experiment": "baseline",
+      "tag": "p2_multi_object",
+      "prompt": "a cat and a dog sitting together on a park bench",
+      "negative_prompt": "blurry, lowres, distorted, watermark, text",
+      "seed": 42,
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "scheduler": "PNDMScheduler",
+      "height": 512,
+      "width": 512,
+      "seconds": 6.0,
+      "image": "images/p2_multi_object.png"
+    },
+    {
+      "experiment": "baseline",
+      "tag": "p3_spatial",
+      "prompt": "a blue cube to the left of a yellow sphere on a white floor",
+      "negative_prompt": "blurry, lowres, distorted, watermark, text",
+      "seed": 42,
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "scheduler": "PNDMScheduler",
+      "height": 512,
+      "width": 512,
+      "seconds": 6.05,
+      "image": "images/p3_spatial.png"
+    },
+    {
+      "experiment": "baseline",
+      "tag": "p4_stylistic",
+      "prompt": "a mountain lake at sunrise, in the style of a watercolor painting",
+      "negative_prompt": "blurry, lowres, distorted, watermark, text",
+      "seed": 42,
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "scheduler": "PNDMScheduler",
+      "height": 512,
+      "width": 512,
+      "seconds": 6.07,
+      "image": "images/p4_stylistic.png"
+    },
+    {
+      "experiment": "baseline",
+      "tag": "p5_abstract",
+      "prompt": "the feeling of nostalgia, surreal dreamlike digital art",
+      "negative_prompt": "blurry, lowres, distorted, watermark, text",
+      "seed": 42,
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "scheduler": "PNDMScheduler",
+      "height": 512,
+      "width": 512,
+      "seconds": 6.05,
+      "image": "images/p5_abstract.png"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "source": "COCO Captions 2017 (val2017)",
+  "seed": 42,
+  "rules": {
+    "min_short_side": 384,
+    "max_aspect": 2.0,
+    "max_tokens": 77,
+    "image_size": 512
+  },
+  "counts": {
+    "raw_images": 5000,
+    "after_image_filters": 4064,
+    "valid_pairs": 4064,
+    "final_pairs": 2000
+  },
+  "dropped": {
+    "too_small": 928,
+    "not_rgb": 8
+  },
+  "caption_words": {
+    "min": 7,
+    "median": 10.0,
+    "max": 38
+  }
+}
