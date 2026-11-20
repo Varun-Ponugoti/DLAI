@@ -1,0 +1,187 @@
+{
+  "generated_utc": "2026-11-20T01:02:11.209833+00:00",
+  "experiment": "noise_sweep",
+  "model_id": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+  "samplers": [
+    "pndm",
+    "ddim",
+    "dpm"
+  ],
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "dtype": "torch.float16",
+  "versions": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "diffusers": "0.31.0",
+    "transformers": "4.46.3"
+  },
+  "num_runs": 15,
+  "runs": [
+    {
+      "experiment": "noise_sweep",
+      "tag": "p1_simple_object_pndm",
+      "prompt": "a red apple on a wooden table",
+      "scheduler": "pndm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 6.58,
+      "image": "p1_simple_object_pndm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p1_simple_object_ddim",
+      "prompt": "a red apple on a wooden table",
+      "scheduler": "ddim",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.43,
+      "image": "p1_simple_object_ddim.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p1_simple_object_dpm",
+      "prompt": "a red apple on a wooden table",
+      "scheduler": "dpm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.42,
+      "image": "p1_simple_object_dpm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p2_multi_object_pndm",
+      "prompt": "a cat and a dog sitting together on a park bench",
+      "scheduler": "pndm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.59,
+      "image": "p2_multi_object_pndm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p2_multi_object_ddim",
+      "prompt": "a cat and a dog sitting together on a park bench",
+      "scheduler": "ddim",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.48,
+      "image": "p2_multi_object_ddim.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p2_multi_object_dpm",
+      "prompt": "a cat and a dog sitting together on a park bench",
+      "scheduler": "dpm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.47,
+      "image": "p2_multi_object_dpm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p3_spatial_pndm",
+      "prompt": "a blue cube to the left of a yellow sphere on a white floor",
+      "scheduler": "pndm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.68,
+      "image": "p3_spatial_pndm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p3_spatial_ddim",
+      "prompt": "a blue cube to the left of a yellow sphere on a white floor",
+      "scheduler": "ddim",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.58,
+      "image": "p3_spatial_ddim.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p3_spatial_dpm",
+      "prompt": "a blue cube to the left of a yellow sphere on a white floor",
+      "scheduler": "dpm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.58,
+      "image": "p3_spatial_dpm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p4_stylistic_pndm",
+      "prompt": "a mountain lake at sunrise, in the style of a watercolor painting",
+      "scheduler": "pndm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.77,
+      "image": "p4_stylistic_pndm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p4_stylistic_ddim",
+      "prompt": "a mountain lake at sunrise, in the style of a watercolor painting",
+      "scheduler": "ddim",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.66,
+      "image": "p4_stylistic_ddim.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p4_stylistic_dpm",
+      "prompt": "a mountain lake at sunrise, in the style of a watercolor painting",
+      "scheduler": "dpm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.66,
+      "image": "p4_stylistic_dpm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p5_abstract_pndm",
+      "prompt": "the feeling of nostalgia, surreal dreamlike digital art",
+      "scheduler": "pndm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.89,
+      "image": "p5_abstract_pndm.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p5_abstract_ddim",
+      "prompt": "the feeling of nostalgia, surreal dreamlike digital art",
+      "scheduler": "ddim",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.78,
+      "image": "p5_abstract_ddim.png"
+    },
+    {
+      "experiment": "noise_sweep",
+      "tag": "p5_abstract_dpm",
+      "prompt": "the feeling of nostalgia, surreal dreamlike digital art",
+      "scheduler": "dpm",
+      "steps": 30,
+      "guidance_scale": 7.5,
+      "seed": 42,
+      "seconds": 4.76,
+      "image": "p5_abstract_dpm.png"
+    }
+  ]
+}
