@@ -41,12 +41,12 @@ generative/
 │   ├── utils.py                   # device, paths, seeding, run logs, grids, gallery
 │   ├── dataset_prep.py            # COCO download, filtering, subset building
 │   ├── pipeline.py                # text encoder, UNet/VAE loading, denoising loop
-│   ├── schedulers.py              # noise schedules / samplers by name (pending, M2)
+│   ├── schedulers.py              # noise schedules / samplers by name (PNDM, DDIM, DPM-Solver, ...)
 │   └── evaluate.py                # placeholder
 ├── outputs/                       # committed results, one folder per milestone
 │   ├── milestone1_baseline/
 │   └── milestone2_conditioning/
-└── reports/                       # proposal, report, presentation figures
+└── reports/                       # milestone reports (M2: PDF + Markdown), presentation figures
 ```
 
 Notebooks are thin drivers: the logic lives in `src/`, so the same code runs from any
@@ -130,9 +130,11 @@ the full Stable Diffusion pipeline (several GB, cached afterwards).
 | 2 | Loads CLIP, UNet, VAE and scheduler separately; checks they connect | — |
 | 3 | Runs our own denoising loop and compares it with M1's pipeline image | — |
 | 4 | Baseline conditional generation: the 5 prompts through our loop | `outputs/milestone2_conditioning/baseline/`, `run_log.json`, `GALLERY.md` |
+| 5 | Noise schedule / sampler sweep: the 5 prompts through PNDM, DDIM and DPM-Solver (`src/schedulers.py`), with seed, steps and guidance fixed and no negative prompt | `outputs/milestone2_conditioning/noise_sweep/` (images, `grid.png`, `run_log.json`, `GALLERY.md`) |
 
-Further steps (guidance sweep, noise schedule sweep, recording) will be added as M2
-progresses.
+The classifier-free guidance sweep (s = 1.0, 3.0, 5.0, 7.5, 10.0, 15.0) was run separately;
+its results are committed in `outputs/milestone2_conditioning/guidance_sweep/`, and its cell
+will be added to this notebook.
 
 M2 does **not** need the COCO subset, so it runs without re-running M1. Step 3 only
 needs M1's baseline image (`outputs/milestone1_baseline/images/p1_simple_object.png`),
@@ -148,15 +150,16 @@ notebook (see [How to Run](#how-to-run)).
 
 - **Results:** each notebook writes to `outputs/<milestone>/`. Commit those folders; they
   are part of the deliverable.
-- **On Colab:** files are lost when the session ends. Each notebook's last cell zips its
-  results with repo-relative paths: unzip at `generative/` in your local clone and commit.
-  Alternatively, push from Colab with a GitHub personal access token.
+- **On Colab:** files are lost when the session ends. Zip the milestone's output folder with
+  repo-relative paths (the M1 notebook's last cell does this for you), unzip it at
+  `generative/` in your local clone and commit. Alternatively, push from Colab with a
+  GitHub personal access token.
 - **Pull before you run** so you don't overwrite a teammate's outputs.
 
 ## Reproducibility
 
 - All runs use a fixed seed (42).
-- Each `outputs/<milestone>/run_log.json` records the model ID, scheduler, step count,
+- Each `run_log.json` under `outputs/` records the model ID, scheduler, step count,
   guidance scale, device, timing, and the **actual** library versions used (including
   torch) for every generated image.
 - `data/coco_subset/cleaning_report.json` records the filter rules and how many images and
@@ -177,20 +180,28 @@ notebook (see [How to Run](#how-to-run)).
   `outputs/milestone1_baseline/text_embedding_report.json`
 - [x] **5 baseline runs** with `StableDiffusionPipeline` (PNDM, 30 steps, guidance 7.5)
 
-### M2 — Integration & Baseline in progress
+### M2 — Integration & Baseline complete
 
-Done:
 - [x] **Text encoder integrated with the diffusion model:** CLIP + UNet + VAE + scheduler
   loaded separately and connected in our own denoising loop (`src/pipeline.py`).
   CLIP hidden size (768) matches the UNet's cross-attention dimension
 - [x] **Integration verified:** our loop reproduces M1's off-the-shelf pipeline image
   (mean pixel difference 0.31 / 255) at ~4.3 s per image on GPU, vs. ~6 s for the pipeline
+- [x] **Baseline conditional generation:** 5 prompts through our loop, with run logging
+  (`outputs/milestone2_conditioning/baseline/`)
+- [x] **Classifier-free guidance sweep:** 6 values (s = 1.0, 3.0, 5.0, 7.5, 10.0, 15.0) for each
+  prompt (`outputs/milestone2_conditioning/guidance_sweep/`)
+- [x] **Noise schedule sweep:** PNDM, DDIM and DPM-Solver for each prompt, with seed, steps and
+  guidance fixed; samplers are chosen by name with `src/schedulers.py`
+  (`outputs/milestone2_conditioning/noise_sweep/`)
+- [x] **Recorded generated images:** run logs and galleries for each experiment; M2 report in
+  `reports/` (`IE7615_Group-10_Generative_Milestone-2_Report.pdf`, `milestone2_summary.md`)
 
-Pending:
-- [ ] **Baseline conditional generation:** 5 prompts through our loop, with run logging
-- [ ] **Classifier-free guidance sweep** (≥ 3 values)
-- [ ] **Noise schedule sweep** (≥ 3 values), including `src/schedulers.py`
-- [ ] **Record generated images:** combined `run_log.json`, `GALLERY.md`, M2 write-up
+Main observations (details in the report):
+- s = 7.5 gives the best balance: s = 1.0 loses image structure, s = 15 oversaturates
+- At 30 steps the sampler changes the content of some images but not their quality
+- Prompt alignment fails in the same way across settings: the cat + dog prompt gives cats only
+  (a dog-like animal appears only at s = 10), and no setting produces the blue cube
 
 ### Later milestones
 
