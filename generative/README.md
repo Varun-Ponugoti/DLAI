@@ -130,11 +130,8 @@ the full Stable Diffusion pipeline (several GB, cached afterwards).
 | 2 | Loads CLIP, UNet, VAE and scheduler separately; checks they connect | — |
 | 3 | Runs our own denoising loop and compares it with M1's pipeline image | — |
 | 4 | Baseline conditional generation: the 5 prompts through our loop | `outputs/milestone2_conditioning/baseline/`, `run_log.json`, `GALLERY.md` |
-| 5 | Noise schedule / sampler sweep: the 5 prompts through PNDM, DDIM and DPM-Solver (`src/schedulers.py`), with seed, steps and guidance fixed and no negative prompt | `outputs/milestone2_conditioning/noise_sweep/` (images, `grid.png`, `run_log.json`, `GALLERY.md`) |
-
-The classifier-free guidance sweep (s = 1.0, 3.0, 5.0, 7.5, 10.0, 15.0) was run separately;
-its results are committed in `outputs/milestone2_conditioning/guidance_sweep/`, and its cell
-will be added to this notebook.
+| 5 | Classifier-free guidance sweep: the 5 prompts at s = 1.0, 3.0, 5.0, 7.5, 10.0, 15.0, other settings as in Step 4 | `outputs/milestone2_conditioning/guidance_sweep/` (images, `grid.png`), runs added to `run_log.json` and `GALLERY.md` |
+| 6 | Noise schedule / sampler sweep: the 5 prompts through PNDM, DDIM and DPM-Solver (`src/schedulers.py`), with seed, steps and guidance fixed and no negative prompt | `outputs/milestone2_conditioning/noise_sweep/` (images, `grid.png`, `run_log.json`, `GALLERY.md`) |
 
 M2 does **not** need the COCO subset, so it runs without re-running M1. Step 3 only
 needs M1's baseline image (`outputs/milestone1_baseline/images/p1_simple_object.png`),
